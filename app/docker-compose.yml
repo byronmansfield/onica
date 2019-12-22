@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+
+  app:
+    container_name: app
+    image: bmansfield/onica:latest
+    ports:
+      - 8080:5000
+    networks:
+      onica-network:
+        aliases:
+          - flask-app
+    environment:
+      - FLASK_APP=hello.py
+    restart: unless-stopped
+    command: flask run --host=0.0.0.0
+
+  nginx:
+    image: nginx:1.13.7
+    container_name: nginx
+    ports:
+      - 80:80
+    depends_on:
+      - app
+    networks:
+      - onica-network
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+
+networks:
+  onica-network:
