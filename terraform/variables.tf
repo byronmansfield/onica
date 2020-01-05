@@ -69,3 +69,9 @@ variable "app_port" {
   description = "Port the hello world application will be served on"
   default     = ""
 }
+
+variable "key_name" {
+  type        = string
+  description = "ssh key name"
+  default     = ""
+}

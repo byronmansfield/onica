@@ -5,14 +5,14 @@ provider "aws" {
 }
 
 resource "aws_eip" "nat" {
-  count = 3
+  count = 4
   vpc   = true
 }
 
 module "vpc" {
   source = "terraform-aws-modules/vpc/aws"
 
-  name = "${var.environment}-${var.application_slug}"
+  name = "dev-onica"
   cidr = var.vpc_cidr
 
   azs             = var.az_list

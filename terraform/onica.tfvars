@@ -12,3 +12,5 @@ public_subnet_cidr_list  = ["10.0.0.0/24", "10.0.1.0/24", "10.0.2.0/24"]
 
 elb_name = "onica-hello-elb"
 app_port = "5000"
+
+key_name = "onica_ec2"
